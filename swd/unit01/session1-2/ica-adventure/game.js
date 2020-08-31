@@ -1,7 +1,3 @@
-// TODO:
-// - delete item when it gets taken
-// - fix bug where exits don't matter
-
 let game = {};
 
 let player = {
