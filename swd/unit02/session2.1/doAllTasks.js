@@ -31,16 +31,16 @@ doAllTasks(printWhenFinished);
 
 /* C */
 
-let doAllTasks2 = (/* Pas hier de code aan voor onderdeel C */) => {
+let doAllTasks2 = (callback) => {
     let completedTasks = [];
     setTimeout(() => {
         completedTasks.push('Taak 1 klaar');
         setTimeout(() => {
             completedTasks.push('Taak 2 klaar');
-            /* C) Plaats je aanpassing op deze regel */
+            callback();
         }, Math.random() * 100);
     }, Math.random() * 100);    
-}; 
+};
 
 /* D */
 let printResults = (resultList) => {
@@ -50,4 +50,15 @@ let printResults = (resultList) => {
     });
 };
 
-doAllTasks2(/* D) Pas hier de code aan */);
+let doAllTasks2 = (callback) => {
+    let completedTasks = [];
+    setTimeout(() => {
+        completedTasks.push('Taak 1 klaar');
+        setTimeout(() => {
+            completedTasks.push('Taak 2 klaar');
+            callback();
+        }, Math.random() * 100);
+    }, Math.random() * 100);    
+};
+
+doAllTasks2(printResults);
