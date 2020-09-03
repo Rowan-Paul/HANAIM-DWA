@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+
+      .notShown {
+         display: none;
+      }
+
+      .tooLong {
+         color: red;
+         border: solid 5px red;
+      }
+
+   </style>
+</head>
+<body>
+
+   <h1>5 Tweet your heart out!</h1>
+   <hr>
+   <div id="tweetListContainer">
+      <h3>Your tweets:</h3>
+      <ol id="tweetList">
+         <li>
+            <b><i>Bug Bunny:</i></b><br>
+            "This is my example tweet"
+            <hr>
+         </li>
+      </ol>
+   </div>
+   <hr>
+   <h3>Create a new tweet:</h3>
+   <div id="tweetFormContainer">
+      <form id="tweetForm" action="#">
+      <div>
+         <input id="authorName" placeholder="Your name...">
+      </div>
+      <div>
+         <textarea id="tweetText" rows="1" cols="35" placeholder="Your tweet..."></textarea>
+      </div>
+      <div id="counterDiv" class="notShown">
+         chars: <span id="characterCounter">0</span>
+      </div>
+      <input id="photoFile" class="notShown" type="file">
+      <div id="buttonsDiv" class="notShown">
+         <input type="button" id="photoButton" value="Photo...">
+         <input type="submit" id="sendButton" value="Send tweet">
+      </div>
+      </form>
+   </div>
+
+</body>
+<script>
+
+function $ (query) {
+      return document.querySelector(query);
+   }
+
+   const tweetText = $('#tweetText');
+   const authorName = $('#authorName');
+   const photoButton = $('#photoButton');
+   const sendButton = $('#sendButton');
+   const counterDiv = $('#counterDiv');
+   const buttonsDiv = $('#buttonsDiv');
+   const tweetForm = $('#tweetForm');
+
+   function userFocus() {
+      tweetText.rows = 4;
+      buttonsDiv.classList.remove('notShown');
+      counterDiv.classList.remove('notShown');
+
+      checkTweetText();
+   }
+
+   tweetText.addEventListener('focus', userFocus);
+   authorName.addEventListener('focus', userFocus);
+
+   function checkTweetText() {
+      const tweetLength = tweetText.value.length;
+
+      counterDiv.innerHTML = tweetLength;
+
+      if(tweetLength >= 140) {
+         sendButton.disabled = true;
+         tweetText.classList.add('tooLong');
+
+      } else {
+         sendButton.disabled = false;
+         tweetText.classList.remove('tooLong');
+      }
+
+      if(tweetLength < 1) {
+         sendButton.disabled = true;
+      }
+
+   }
+
+   tweetText.addEventListener('input', checkTweetText);
+
+   function photoAdd() {
+      photoFile.classList.remove('notShown');
+      photoButton.classList.add('notShown');
+   }
+
+   photoButton.addEventListener('click', photoAdd);
+
+   // TODO: make it not broken
+   tweetForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const author = "arthur";
+      const tweet = "tweetie";
+
+      let newTweet = document.createElement('li');
+      newEl.innerHTML = `<strong><em>${author}</em></strong><br>${tweet}<br></li>`;
+      tweetList.appendChild(newEl);
+   })
+
+</script>
+</html>
