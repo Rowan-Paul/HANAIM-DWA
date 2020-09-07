@@ -36,28 +36,18 @@ game.getInventory = () => {
  * @returns {Array}
  */
 game.getItems = () => {
-  if (player.location == "forest") {
-    return map.forest.items;
-  } else if (player.location == "town") {
-    return map.town.items;
-  } else if (player.location == "mountain") {
-    return map.mountain.items;
-  }
+  return map[player.location].items;
 };
-
 /**
  * Returns an object containing the description and the
  * exits of the players current location on the map.
  * @returns {Object}
  */
 game.getLocationInformation = () => {
-  if (player.location == "forest") {
-    return { description: map.forest.description, exits: map.forest.exits };
-  } else if (player.location == "town") {
-    return { description: map.town.description, exits: map.town.exits };
-  } else if (player.location == "mountain") {
-    return { description: map.mountain.description, exits: map.mountain.exits };
-  }
+  return {
+    description: map[player.location].description,
+    exits: map[player.location].exits,
+  };
 };
 
 /**
@@ -70,28 +60,12 @@ game.getLocationInformation = () => {
  * @returns {String} - The location the player is in after executing this function
  */
 game.goToLocation = (locationName) => {
-  if (player.location == "forest") {
-    if (locationName == "town") {
-      player.location = "town";
-      return "town";
-    }
-    return "forest";
-  } else if (player.location == "town") {
-    if (locationName == "forest") {
-      player.location = "forest";
-      return "forest";
-    } else if (locationName == "mountain") {
-      player.location = "mountain";
-      return "mountain";
-    }
-    return "town";
-  } else if (player.location == "mountain") {
-    if (locationName == "town") {
-      player.location = "town";
-      return "town";
-    }
-    return "mountain";
+  if (map[player.location].exits.includes(locationName)) {
+    player.location = locationName;
+    return locationName;
   }
+
+  return player.location;
 };
 
 /**
@@ -104,25 +78,18 @@ game.goToLocation = (locationName) => {
  * the string 'nothing'
  */
 game.takeItem = (itemName) => {
-  if (player.location == "forest" && map.forest.items.includes(itemName)) {
-    // From stackoverflow: https://bit.ly/3hLgOrl
-    // Remove the item from the location and add to inventory
-    map.forest.items = map.forest.items.filter((e) => e !== itemName);
-    player.items.push(itemName);
-    return itemName;
-  } else if (player.location == "town" && map.town.items.includes(itemName)) {
-    map.town.items = map.forest.items.filter((e) => e !== itemName);
-    player.items.push(itemName);
-    return itemName;
-  } else if (
-    player.location == "mountain" &&
-    map.mountain.items.includes(itemName)
-  ) {
-    map.town.items = map.forest.items.filter((e) => e !== itemName);
-    player.items.push(itemName);
-    return itemName;
+  if (game.getItems().includes(itemName)) {
+    const itemIndex = map[player.location].items.indexOf(itemName);
+
+    if (itemIndex > -1) {
+      map[player.location].items.splice(itemIndex, 1);
+      player.items.push(itemName);
+
+      return itemName;
+    }
+
+    return "nothing";
   }
-  return "nothing";
 };
 
 module.exports = game;
