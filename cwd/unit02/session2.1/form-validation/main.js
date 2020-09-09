@@ -8,7 +8,9 @@ window.onload = function initializeApp() {
   // The form-validator uses functions to check if a field has valid input.
   // This object defines which checker functions work for which form fields.
   const theFormCheckers = {
-    achternaam: isRequired, // isRequired is a checker defined in formValidation.js
+    voornaam: nameLength,
+    achternaam: nameLength,
+    // achternaam: isRequired, // isRequired is a checker defined in formValidation.js
     postcode: isaPostCode,  // isaPostCode is a checker defined in this file.
     huisnummer: isRequired
   };
@@ -39,4 +41,11 @@ function isaPostCode(value) {
   const result = position !== -1; // return value of -1 means the pattern was not found.
   console.log(`Checked postcode «${value}»:`, result);
   return result;
+}
+
+function nameLength(value) {
+  if(value.length < 3 || value.length > 20) {
+    return false;
+  }
+  return true;
 }
