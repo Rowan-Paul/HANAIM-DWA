@@ -8,14 +8,13 @@ window.onload = function initializeApp() {
 	// The form-validator uses functions to check if a field has valid input.
 	// This object defines which checker functions work for which form fields.
 	const theFormCheckers = {
-		voornaam: optional(checkBoth(hasMaxLength(20), hasMinLength(3))),
-		achternaam: checkBoth(hasMaxLength(20), hasMinLength(3)),
-		postcode: optional(isaPostCode),
+		achternaam: isRequired,
+		postcode: isRequired,
 		huisnummer: isRequired,
 	};
 	theForm.addEventListener(
 		"submit",
-		makeFormValidator(theFormCheckers, handleFormSubmit)
+		makeFormValidator(theFormCheckers, handleFormSubmit, handleErrors);
 	);
 };
 
@@ -39,4 +38,31 @@ function isaPostCode(value) {
 	const result = position !== -1; // return value of -1 means the pattern was not found.
 	console.log(`Checked postcode «${value}»:`, result);
 	return result;
+}
+
+function handleErrors(checkerFailures) {
+	theErrorReport.hidden = false;
+	const errorList = document.getElementById("error-messages");
+	errorList.innerHTML = "";
+
+	checkerFailures
+		.map(([name, failure]) => {
+			if (failure !== false) {
+				return [name, failure];
+			} else {
+				return [name, "Dit veld is niet correct ingevuld"];
+			}
+		})
+		.map(([name, message]) => {
+			const messageHtml = `<b>${name}:</b> ` + message;
+			return messageHtml;
+		})
+		.map((messageHtml) => {
+			const listItem = document.createElement("li");
+			listItem.innerHTML = messageHtml;
+			return listItem;
+		})
+		.forEach((item) => {
+			errorList.appendChild(item);
+		});
 }
