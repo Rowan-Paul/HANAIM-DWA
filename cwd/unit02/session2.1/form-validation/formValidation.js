@@ -57,31 +57,44 @@ function isRequired(value) {
 	return result;
 }
 
-// A checker function to check the amount of characters
-function checkBoth(checker1, checker2) {
-  return function(value) {
-    if(checker1(value) && checker2(value)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
-
-function hasMaxLength(maxLength) {
+// A checker function which gives back true if empty
+function optional(checker) {
 	return function (value) {
-		if (value.length > maxLength) {
+		if (value.length < 1 || checker(value) == true) {
+			return true;
+		} else {
 			return false;
 		}
-		return true;
 	};
 }
 
-function hasMinLength(minLength) {
+// A checker function to check multiple functions
+function checkBoth(checker1, checker2) {
 	return function (value) {
-		if (value.length < minLength) {
+		if (checker1(value) && checker2(value)) {
+			return true;
+		} else {
 			return false;
 		}
-		return true;
+	};
+}
+
+// A checker function to check max length
+function hasMaxLength(maxLength) {
+	return function (value) {
+		if (value.length < maxLength) {
+			return true;
+		}
+		return false;
+	};
+}
+
+// A checker function to check min length
+function hasMinLength(minLength) {
+	return function (value) {
+		if (value.length > minLength) {
+			return true;
+		}
+		return false;
 	};
 }
