@@ -14,7 +14,7 @@ window.onload = function initializeApp() {
 	};
 	theForm.addEventListener(
 		"submit",
-		makeFormValidator(theFormCheckers, handleFormSubmit, handleErrors);
+		makeFormValidator(theFormCheckers, handleFormSubmit, handleErrors)
 	);
 };
 
