@@ -59,9 +59,8 @@ function optional(checker) {
 	return function (value) {
 		if (value.length < 1 || checker(value) == true) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	};
 }
 
@@ -70,9 +69,8 @@ function checkBoth(checker1, checker2) {
 	return function (value) {
 		if (checker1(value) && checker2(value)) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	};
 }
 
@@ -93,5 +91,16 @@ function hasMinLength(minLength) {
 			return true;
 		}
 		return false;
+	};
+}
+
+// Handle error messages
+function message(checker, string) {
+	return function (value) {
+		if(checker(value)) {
+			return true;
+		} else if(checker(value) === false || typeof checker(value) === string){
+			return string;
+		}
 	};
 }
