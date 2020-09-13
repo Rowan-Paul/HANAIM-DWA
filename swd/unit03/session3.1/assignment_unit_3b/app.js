@@ -20,14 +20,17 @@ app.get('/action/:player/where', async (req, res) => {
 });
 
 app.post('/action/:player/goto', async (req, res) => {
-   const fileName = path.join(gameFilesFolderName, `${req.params.player}.json`);
-   const fileContent = await promiseWrappers.readFileP(fileName);
-   const gameState = JSON.parse(fileContent);
-   const game = new Game(gameState);
-   const locationInformation = await game.goToLocation(req.query.location);
-   res.json(locationInformation);
-
-   // TODO change location information inside the JSON
+    const user = req.params.player;
+    const fileName = path.join(gameFilesFolderName, `${user}.json`);
+    const fileContent = await promiseWrappers.readFileP(fileName);
+    const gameState = JSON.parse(fileContent);
+    const game = new Game(gameState);
+ 
+    const gotoLocation = await game.goToLocation(req.query.location);
+    // Overwrite the current file with new gamestate
+    const writeFile = await promiseWrappers.writeFileP(fileName, JSON.stringify(game.state));
+    
+    res.json(gotoLocation);
 });
 
 const server = app.listen(3000, () => {
