@@ -58,6 +58,13 @@ app.delete("/deletePlayerFile/:player", async (req, res) => {
 	res.json({ result: "game " + user + ".json  removed" });
 });
 
+app.post('/createPlayerFile', async(req, res) => {
+  const fileName = path.join(gameFilesFolderName, `${req.body.name}.json`);
+  const createFile = await promiseWrappers.createEmptyFileP(fileName);
+
+  res.json("Created new file: " + fileName);
+});
+
 app.post("/action/:player/goto", async (req, res) => {
 	//Paste your implementation from assignment unit 3c here
 	const user = req.params.player;
