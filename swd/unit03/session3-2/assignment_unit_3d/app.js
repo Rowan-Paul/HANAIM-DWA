@@ -13,11 +13,15 @@ const gameFilesFolderName = "game_files";
 app.use(bodyParser.json());
 
 const gameFileReader = async (req, res, next) => {
-	// Middleware can't acces req.params
-	// https://github.com/expressjs/express/issues/2088
-	req.fileName = path.join(gameFilesFolderName, `${req.params.player}.json`);
-	req.fileContent = await promiseWrappers.readFileP(req.fileName);
-	next();
+  try {
+    // Middleware can't acces req.params
+    // https://github.com/expressjs/express/issues/2088
+    req.fileName = path.join(gameFilesFolderName, `${req.params.player}.json`);
+    req.fileContent = await promiseWrappers.readFileP(req.fileName);
+    next();
+  } catch {
+    next("Player does not exist");
+  }
 };
 
 app.get("/action/:player/where", gameFileReader, async (req, res) => {
@@ -27,7 +31,7 @@ app.get("/action/:player/where", gameFileReader, async (req, res) => {
 	res.json(locationInformation);
 });
 
-app.post("/action/:player/goto", async (req, res) => {
+app.post("/action/:player/goto", gameFileReader, async (req, res) => {
 	//Paste your implementation from assignment unit 3c here
 	const user = req.params.player;
 	const fileName = path.join(gameFilesFolderName, `${user}.json`);
