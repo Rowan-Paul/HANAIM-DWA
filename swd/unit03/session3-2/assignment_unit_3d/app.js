@@ -38,9 +38,9 @@ const fileErrorHandler = async (err, req, res, next) => {
 };
 
 app.get("/listPlayerFiles", async (req, res) => {
-  const folder = await promiseWrappers.readdirP(gameFilesFolderName);
+	const folder = await promiseWrappers.readdirP(gameFilesFolderName);
 
-  res.json(folder);
+	res.json(folder);
 });
 
 app.get("/action/:player/where", gameFileReader, async (req, res) => {
@@ -48,6 +48,14 @@ app.get("/action/:player/where", gameFileReader, async (req, res) => {
 	const game = new Game(gameState);
 	const locationInformation = await game.getLocationInformation();
 	res.json(locationInformation);
+});
+
+app.delete("/deletePlayerFile/:player", async (req, res) => {
+	const user = req.params.player;
+  const fileName = path.join(gameFilesFolderName, `${user}.json`);
+  
+	const deletePlayer = await promiseWrappers.unlinkFileP(fileName);
+	res.json({ result: "game " + user + ".json  removed" });
 });
 
 app.post("/action/:player/goto", async (req, res) => {
