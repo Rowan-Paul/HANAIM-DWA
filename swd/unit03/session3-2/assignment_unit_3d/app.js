@@ -37,6 +37,12 @@ const fileErrorHandler = async (err, req, res, next) => {
 	}
 };
 
+app.get("/listPlayerFiles", async (req, res) => {
+  const folder = await promiseWrappers.readdirP(gameFilesFolderName);
+
+  res.json(folder);
+});
+
 app.get("/action/:player/where", gameFileReader, async (req, res) => {
 	const gameState = JSON.parse(req.fileContent);
 	const game = new Game(gameState);
