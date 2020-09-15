@@ -1,56 +1,63 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-// middleware that is specific to this router
-const gameFileReader = async (req, res, next) => {
+const Game = require("../game.js");
+
+const bodyParser = require("body-parser");
+
+const promiseWrappers = require("../promise-wrappers");
+const path = require("path");
+
+router.use(bodyParser.json());
+
+const gameStateReader = async (req, res, next) => {
 	try {
-		// Middleware can't acces req.params
-		// https://github.com/expressjs/express/issues/2088
-		req.fileName = path.join(
-			gameFilesFolderName,
-			`${req.params.player}.json`
-		);
-		req.fileContent = await promiseWrappers.readFileP(req.fileName);
+		const gameState = JSON.parse(req.fileContent);
+		req.game = new Game(gameState);
 		next();
-	} catch(err) {
-		next("Player does not exist");
-	}
-};
-
-// TODO: make this actually do something
-// without chrashing the entire app
-const fileErrorHandler = async (err, req, res, next) => {
-	if (!req.fileContent) {
-		res.status(500).json(err.message);
-	} else {
+	} catch (err) {
 		next(err);
 	}
 };
 
-router.get("/listPlayerFiles", async (req, res) => {
-	const folder = await promiseWrappers.readdirP(gameFilesFolderName);
+router.use("/action/:player/where", gameStateReader);
+router.use("/action/:player/goto", gameStateReader);
 
-	res.json(folder);
+router.get("/action/:player/where", async (req, res) => {
+	const locationInformation = await req.game.getLocationInformation();
+	res.json(locationInformation);
 });
 
-router.delete("/deletePlayerFile/:player", async (req, res) => {
-	const user = req.params.player;
-	const fileName = path.join(gameFilesFolderName, `${user}.json`);
-
-	const deletePlayer = await promiseWrappers.unlinkFileP(fileName);
-	res.json({ result: "game " + user + ".json  removed" });
+router.post("/action/:player/goto", async (req, res) => {
+	const locationDescription = await req.game.goToLocation(req.query.location);
+	const writeFile = await promiseWrappers.writeFileP(
+		req.fileName,
+		JSON.stringify(game.state)
+	);
+	res.json(locationDescription);
 });
 
-router.post("/createPlayerFile", async (req, res) => {
-	const fileName = path.join(gameFilesFolderName, `${req.body.name}.json`);
-	const createFile = await promiseWrappers.createEmptyFileP(fileName);
+router.post("/action/:player/arise", async (req, res) => {
+	const game = new Game();
 
-	res.json("Created new file: " + fileName);
-});
+	const data = {
+		player: {
+			name: req.params.player,
+			location: req.body.start,
+			items: req.body.inventory,
+		},
+	};
 
-// define the home page route
-router.get("/", function (req, res) {
-	res.send("Root");
+	const writeFile = await promiseWrappers.writeFileP(
+		req.fileName,
+		JSON.stringify(data)
+	);
+	const startNew = await game.startNew(
+		data.player.location,
+		data.player.items
+	);
+
+	res.json(startNew);
 });
 
 module.exports = router;

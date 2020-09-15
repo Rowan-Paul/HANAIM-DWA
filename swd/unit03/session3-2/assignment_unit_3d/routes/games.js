@@ -1,72 +1,59 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
+const bodyParser = require("body-parser");
 
-// middleware that is specific to this router
+const promiseWrappers = require("../promise-wrappers");
+const path = require("path");
+
 const gameFilesFolderName = "game_files";
 
-router.use(function timeLog(req, res, next) {
-	console.log("Time: ", Date.now());
-	next();
+router.use(bodyParser.json());
+
+const gameFileReader = async (req, res, next) => {
+	try {
+		req.fileName = path.join(
+			gameFilesFolderName,
+			`${req.params.player}.json`
+		);
+		req.fileContent = await promiseWrappers.readFileP(req.fileName);
+		next();
+	} catch (err) {
+		err = new Error("Player does not exist");
+		next(err);
+	}
+};
+
+const readGameFileErrorHandler = async (err, req, res, next) => {
+	if (!req.fileContent) {
+		res.status(500).json(err.message);
+	} else {
+		next(err);
+	}
+};
+
+router.use("/action/:player/", gameFileReader);
+router.use(readGameFileErrorHandler);
+
+router.get("/listPlayerFiles", async (req, res) => {
+	const files = await promiseWrappers.readdirP(gameFilesFolderName);
+	res.json(files);
 });
 
-router.get("/action/:player/where", async (req, res) => {
-	const gameState = JSON.parse(req.fileContent);
-	const game = new Game(gameState);
-	const locationInformation = await game.getLocationInformation();
-	res.json(locationInformation);
+router.delete("/deletePlayerFile/:player", async (req, res) => {
+	const player = req.params.player;
+	const file = path.join(gameFilesFolderName, `${player}.json`);
+	const deletePlayer = await promiseWrappers.unlinkFileP(file);
+	res.json({ result: "game " + player + ".json removed" });
 });
 
-router.post("/action/:player/goto", async (req, res) => {
-	//Paste your implementation from assignment unit 3c here
-	const user = req.params.player;
-	const fileName = path.join(gameFilesFolderName, `${user}.json`);
-	const fileContent = await promiseWrappers.readFileP(fileName);
-	const gameState = JSON.parse(fileContent);
-	const game = new Game(gameState);
-
-	const gotoLocation = await game.goToLocation(req.query.location);
-	// Overwrite the current file with new gamestate
-	const writeFile = await promiseWrappers.writeFileP(
-		fileName,
-		JSON.stringify(game.state)
-	);
-
-	res.json(gotoLocation);
-});
-
-router.post("/action/:player/arise", async (req, res) => {
-	//Paste your implementation from assignment unit 3c here
-	const fileName = path.join(
-		gameFilesFolderName,
-		`${req.params.player}.json`
-	);
-
-	const data = {
-		player: {
-			name: req.params.player,
-			location: req.body.start,
-			items: req.body.inventory,
-		},
-	};
-
-	const game = new Game();
-
-	const writeFile = await promiseWrappers.writeFileP(
-		fileName,
-		JSON.stringify(data)
-	);
-	const startNew = await game.startNew(
-		data.player.location,
-		data.player.items
-	);
-	res.json(startNew);
-});
-
-
-// define the home page route
-router.get("/", function (req, res) {
-	res.send("Root");
+router.post("/createPlayerFile", async (req, res) => {
+	const playername = req.body.name;
+	const newFile = playername + ".json";
+	const filepath = path.join(gameFilesFolderName, newFile);
+	console.log(filepath);
+	const createFile = await promiseWrappers.createEmptyFileP(filepath);
+	res.json("succes");
 });
 
 module.exports = router;
