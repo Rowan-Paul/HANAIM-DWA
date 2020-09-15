@@ -15,8 +15,8 @@ const server = app.listen(3000, () => {
 	console.log(`game server started on port ${server.address().port}`);
 });
 
-var actions = require('./routing/actions.js')
-app.use('/routing', actions)
+const actions = require('./routes/actions.js')
+app.use('/routes', actions)
 
-var actions = require('./routing/games.js')
-app.use('/routing', games)
+const games = require('./routes/games.js')
+app.use('/routes', games)

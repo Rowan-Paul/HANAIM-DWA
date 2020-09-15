@@ -10,14 +10,14 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
-app.get("/action/:player/where", gameFileReader, async (req, res) => {
+router.get("/action/:player/where", async (req, res) => {
 	const gameState = JSON.parse(req.fileContent);
 	const game = new Game(gameState);
 	const locationInformation = await game.getLocationInformation();
 	res.json(locationInformation);
 });
 
-app.post("/action/:player/goto", async (req, res) => {
+router.post("/action/:player/goto", async (req, res) => {
 	//Paste your implementation from assignment unit 3c here
 	const user = req.params.player;
 	const fileName = path.join(gameFilesFolderName, `${user}.json`);
@@ -35,7 +35,7 @@ app.post("/action/:player/goto", async (req, res) => {
 	res.json(gotoLocation);
 });
 
-app.post("/action/:player/arise", async (req, res) => {
+router.post("/action/:player/arise", async (req, res) => {
 	//Paste your implementation from assignment unit 3c here
 	const fileName = path.join(
 		gameFilesFolderName,

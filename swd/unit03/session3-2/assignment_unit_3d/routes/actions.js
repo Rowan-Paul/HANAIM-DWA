@@ -12,7 +12,7 @@ const gameFileReader = async (req, res, next) => {
 		);
 		req.fileContent = await promiseWrappers.readFileP(req.fileName);
 		next();
-	} catch {
+	} catch(err) {
 		next("Player does not exist");
 	}
 };
@@ -27,13 +27,13 @@ const fileErrorHandler = async (err, req, res, next) => {
 	}
 };
 
-app.get("/listPlayerFiles", async (req, res) => {
+router.get("/listPlayerFiles", async (req, res) => {
 	const folder = await promiseWrappers.readdirP(gameFilesFolderName);
 
 	res.json(folder);
 });
 
-app.delete("/deletePlayerFile/:player", async (req, res) => {
+router.delete("/deletePlayerFile/:player", async (req, res) => {
 	const user = req.params.player;
 	const fileName = path.join(gameFilesFolderName, `${user}.json`);
 
@@ -41,7 +41,7 @@ app.delete("/deletePlayerFile/:player", async (req, res) => {
 	res.json({ result: "game " + user + ".json  removed" });
 });
 
-app.post("/createPlayerFile", async (req, res) => {
+router.post("/createPlayerFile", async (req, res) => {
 	const fileName = path.join(gameFilesFolderName, `${req.body.name}.json`);
 	const createFile = await promiseWrappers.createEmptyFileP(fileName);
 
