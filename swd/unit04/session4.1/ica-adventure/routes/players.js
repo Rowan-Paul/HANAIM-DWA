@@ -19,15 +19,26 @@ router.post('/register', async (req, res) => {
     const data = {
         "password": req.body.password
     }
-
     const writeFile = await promiseWrappers.writeFileP(filepath, JSON.stringify(data));
-
 
     res.json("Sign up!");
 })
 
 router.post('/login', async (req, res) => {
-    res.json("Sign in!");
+    const playername = req.body.player;
+    const newFile = playername+".json";
+    const filepath = path.join(playerFilesFolderName, newFile);
+    fileContent = await promiseWrappers.readFileP(filepath);
+    console.log(fileContent);
+
+    userInput = {"password": req.body.password};
+
+    if(JSON.stringify(userInput) === fileContent) {
+        req.session.player = req.body.player
+        res.json("password correct");
+    } else {
+        res.json("password error");
+    }
 })
 
 router.post('/logout', async (req, res) => {

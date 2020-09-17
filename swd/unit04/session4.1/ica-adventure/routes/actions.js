@@ -21,8 +21,8 @@ const gameStateReader = async (req, res, next) => {
     }
 }
 
-router.use('/action//where', gameStateReader);
-router.use('/action//goto', gameStateReader);
+router.use('/action/where', gameStateReader);
+router.use('/action/goto', gameStateReader);
 
 router.get('/action/where', async (req, res) => {
     const locationInformation = await req.game.getLocationInformation();
