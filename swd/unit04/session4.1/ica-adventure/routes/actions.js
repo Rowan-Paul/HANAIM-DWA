@@ -21,21 +21,21 @@ const gameStateReader = async (req, res, next) => {
     }
 }
 
-router.use('/action/:player/where', gameStateReader);
-router.use('/action/:player/goto', gameStateReader);
+router.use('/action//where', gameStateReader);
+router.use('/action//goto', gameStateReader);
 
-router.get('/action/:player/where', async (req, res) => {
+router.get('/action/where', async (req, res) => {
     const locationInformation = await req.game.getLocationInformation();
     res.json(locationInformation);
 });
 
-router.post('/action/:player/goto', async (req, res) => {
+router.post('/action/goto', async (req, res) => {
     const locationDescription = await req.game.goToLocation(req.query.location);
     const writeFile = await promiseWrappers.writeFileP(req.fileName, JSON.stringify(game.state));
     res.json(locationDescription);
 });
 
-router.post('/action/:player/arise', async (req, res) => {
+router.post('/action/arise', async (req, res) => {
     const game = new Game();
 
     const data = {
