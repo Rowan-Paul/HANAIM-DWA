@@ -12,7 +12,7 @@ router.use(bodyParser.json());
 
 const gameFileReader = async (req, res, next) => {
     try {
-      req.fileName = path.join(gameFilesFolderName, `${req.params.player}.json`);
+      req.fileName = path.join(gameFilesFolderName, `${req.session.player}.json`);
       req.fileContent = await promiseWrappers.readFileP(req.fileName);
       next();
     } 
@@ -30,7 +30,7 @@ const readGameFileErrorHandler = async (err, req, res, next) => {
     }
 }
 
-router.use('/action/:player/', gameFileReader);
+router.use('/action/', gameFileReader);
 router.use(readGameFileErrorHandler);
 
 router.get('/listPlayerFiles', async (req, res) => {
@@ -38,15 +38,15 @@ router.get('/listPlayerFiles', async (req, res) => {
     res.json(files);
 })
 
-router.delete('/deletePlayerFile/:player', async (req, res) => {
-    const player = req.params.player;
+router.delete('/deletePlayerFile/', async (req, res) => {
+    const player = req.session.player;
     const file = path.join(gameFilesFolderName, `${player}.json`);
     const deletePlayer = await promiseWrappers.unlinkFileP(file);
     res.json({"result": "game " + player+".json removed"})
 })
 
 router.post('/createPlayerFile', async (req, res) => {
-    const playername = req.body.name;
+    const playername = req.session.player;
     const newFile = playername+".json";
     const filepath = path.join(gameFilesFolderName, newFile);
     console.log(filepath);
