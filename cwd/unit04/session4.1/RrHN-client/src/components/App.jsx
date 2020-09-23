@@ -2,7 +2,7 @@ import React from 'react'
 
 import frontPageItems from '../frontpageData';
 import IFrameArea from './IFrameArea';
-import ListItems from './ListItems';
+import ListItems from './ItemsList';
 
 export class RrHNApp extends React.Component {
    constructor(props) {
