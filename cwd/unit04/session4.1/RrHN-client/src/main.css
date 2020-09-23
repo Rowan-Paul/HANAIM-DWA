@@ -62,16 +62,26 @@ a {
 }
 
 .Logo .colored {
-    display: inline-block;
-    padding: 1rem 0rem;
-    background-color: #ff8800;
-    color: #fff;
-    font-family: 'Arial Black';
-    font-size: 0.8rem;
-    letter-spacing: 1pt;
-    width: 4rem;
-    box-sizing: border-box;
-    text-align: center;
+   display: inline-block;
+   padding: 1rem 0rem;
+   font-family: 'Arial Black';
+   font-size: 0.8rem;
+   letter-spacing: 1pt;
+   width: 4rem;
+   box-sizing: border-box;
+   text-align: center;
+}
+.orange .Logo .colored {
+  background-color: #ff8800;
+  color: #fff;
+}
+.green .Logo .colored {
+  background-color: #659f6c;
+  color: #fff;
+}
+.brown .Logo .colored {
+  background-color: #a9916b;
+  color: #fff;
 }
 .Logo .title {
     display: inline-block;
@@ -129,4 +139,51 @@ a {
     display: inline-block;
     padding: 0rem 0.4rem;
     color: #ccc;
-}    color: #ccc;
+}
+
+.PreferencesDialog {
+   justify-content: center;
+   background-color: white;
+   border: 1px solid #ccc;
+   padding: 0rem 3rem 3rem 3rem;
+   margin: auto auto;
+   width: 80%;
+   max-width: 35rem;
+   font-size: 1.1rem;
+   box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.2);
+}
+.PreferencesDialog header {
+   text-align: left;
+   margin-bottom: 3rem;
+}
+
+.PreferencesDialog label {
+   display:block;
+   margin: 2rem 0 0 0;
+   text-align: left;
+}
+.PreferencesDialog .warning {
+   font-size: 0.8rem;
+   text-align: left;
+   padding-top: 0.2rem;
+   font-style: italic;
+}
+.dialogButtons {
+      text-align: center;
+}
+
+.PreferencesDialog button {
+   display:inline-block;
+   margin-left: 1rem;
+}
+
+.settingsIcon {
+   float:right;
+   margin: 0.7rem 1.2rem;
+   display: inline-block;
+   fill: #bbb;
+   cursor: pointer;
+}
+.settingsIcon:hover {
+   fill: #444;
+}
