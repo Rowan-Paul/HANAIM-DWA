@@ -1,8 +1,7 @@
 import React from 'react'
 
-import frontPageItems from '../frontpageData';
 import IFrameArea from './IFrameArea';
-import ListItems from './ItemsList';   
+import ListItems from './ItemsList';
 import Preferences from './Preferences';
 
 export class RrHNApp extends React.Component {
@@ -10,32 +9,54 @@ export class RrHNApp extends React.Component {
       super(props);
 
       this.state = {
-         items: frontPageItems,
+         items: [],
          selectedItem: '',
          dialogVisibile: false,
          preferences: {
             color: 'orange',
-            listSize: 10
-         }
+            listSize: 8
+         },
+         status: {}
       }
    }
 
-   setColor (color) {
+   async componentDidMount() {
+      try {
+         const data = await fetch("http://localhost:3000/hn/topstories")
+         const parsedData = await data.json();
+         this.setState((items) => ({ items: parsedData }))
+      } catch (err) {
+         console.log(err); // Failed to fetch
+      }
+   }
+
+   setColor(color) {
       this.setState((state) => (
-        {preferences: {...state.preferences, color: color}}
-        )
+         { preferences: { ...state.preferences, color: color } }
+      )
       )
    }
-   setListSize (size) {
+   setListSize(size) {
       this.setState((state) => (
-        {preferences: {...state.preferences, listSize: size}}
-        )
+         { preferences: { ...state.preferences, listSize: size } }
+      )
       )
    }
 
-   onSelectItem = (url) => {
+   onSelectItem = async (item) => {
+      try {
+         const data = await fetch("http://localhost:3000/itemStatuses/" + item.id, {
+            method: 'PUT',
+            body: 'read'
+         })
+         const parsedData = await data.json();
+         console.log(parsedData)
+      } catch (err) {
+         console.log(err); // Failed to fetch
+      }
+
       this.setState(() => ({
-         selectedItem: url
+         selectedItem: item.url
       }));
    }
 
