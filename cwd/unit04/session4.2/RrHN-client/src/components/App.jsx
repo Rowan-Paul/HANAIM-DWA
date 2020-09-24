@@ -20,6 +20,25 @@ export class RrHNApp extends React.Component {
       }
    }
 
+   markAsSeen = async () => {
+      const listItems = this.state.items.slice(0, this.state.preferences.listSize).map(async (item) => {
+         if(this.state.itemStatuses[item.id] != 'read') {
+            try {
+               const data = await fetch("http://localhost:3000/itemStatuses/" + item.id, {
+                  method: 'PUT',
+                  body: 'seen'
+               })
+      
+               this.setState(() => ({
+                  itemStatuses: {...this.state.itemStatuses, [`${item.id}`]: 'seen'}
+               }))
+            } catch (err) {
+               console.log(err); // Failed to fetch
+            }
+         }
+     });
+   }
+
    onSelectItem = async (item) => {
       try {
          const data = await fetch("http://localhost:3000/itemStatuses/" + item.id, {
@@ -120,6 +139,7 @@ export class RrHNApp extends React.Component {
                   <div id="ListMainContent">
                      <ListItems itemStatuses={this.state.itemStatuses} select={this.onSelectItem} listSize={this.state.preferences.listSize} data={this.state.items} />
                   </div>
+                  <button onClick={this.markAsSeen} id="markAsSeen">Mark all items as &quot;seen&quot;</button>
                   <div id="ListFooter">
                      visual design based on <a href="http://blog.trackduck.com/weekly/top-10-hacker-news-redesigns/unknown-author-2/">this redesign by unknown author</a>.
                </div>
