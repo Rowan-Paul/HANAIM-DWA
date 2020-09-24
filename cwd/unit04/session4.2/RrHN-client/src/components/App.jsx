@@ -10,23 +10,52 @@ export class RrHNApp extends React.Component {
 
       this.state = {
          items: [],
+         itemStatuses: [],
          selectedItem: '',
          dialogVisibile: false,
          preferences: {
             color: 'orange',
             listSize: 8
-         },
-         status: {}
+         }
       }
+   }
+
+   onSelectItem = async (item) => {
+      try {
+         const data = await fetch("http://localhost:3000/itemStatuses/" + item.id, {
+            method: 'PUT',
+            body: 'read'
+         })
+
+         this.setState(() => ({
+            itemStatuses: {...this.state.itemStatuses, [`${item.id}`]: 'read'}
+         }))
+      } catch (err) {
+         console.log(err); // Failed to fetch
+      }
+
+      this.setState(() => ({
+         selectedItem: item.url
+      }));
    }
 
    async componentDidMount() {
       try {
-         const data = await fetch("http://localhost:3000/hn/topstories")
-         const parsedData = await data.json();
-         this.setState((items) => ({ items: parsedData }))
+         const statusData = await fetch("http://localhost:3000/itemStatuses")
+         const statusParsedData = await statusData.json();
+         this.setState((itemStatuses) => ({ itemStatuses: statusParsedData }))
+         console.log("Data received")
       } catch (err) {
-         console.log(err); // Failed to fetch
+         console.log(err);
+      }
+
+      try {
+         const itemData = await fetch("http://localhost:3000/hn/topstories")
+         const itemParsedData = await itemData.json();
+         this.setState((items) => ({ items: itemParsedData }))
+         console.log("Items received")
+      } catch (err) {
+         console.log(err);
       }
    }
 
@@ -41,23 +70,6 @@ export class RrHNApp extends React.Component {
          { preferences: { ...state.preferences, listSize: size } }
       )
       )
-   }
-
-   onSelectItem = async (item) => {
-      try {
-         const data = await fetch("http://localhost:3000/itemStatuses/" + item.id, {
-            method: 'PUT',
-            body: 'read'
-         })
-         const parsedData = await data.json();
-         console.log(parsedData)
-      } catch (err) {
-         console.log(err); // Failed to fetch
-      }
-
-      this.setState(() => ({
-         selectedItem: item.url
-      }));
    }
 
    dialogClickHandler = () => {
@@ -106,7 +118,7 @@ export class RrHNApp extends React.Component {
                   </div>
 
                   <div id="ListMainContent">
-                     <ListItems select={this.onSelectItem} listSize={this.state.preferences.listSize} data={this.state.items} />
+                     <ListItems itemStatuses={this.state.itemStatuses} select={this.onSelectItem} listSize={this.state.preferences.listSize} data={this.state.items} />
                   </div>
                   <div id="ListFooter">
                      visual design based on <a href="http://blog.trackduck.com/weekly/top-10-hacker-news-redesigns/unknown-author-2/">this redesign by unknown author</a>.
