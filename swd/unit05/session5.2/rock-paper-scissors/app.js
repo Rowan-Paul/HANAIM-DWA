@@ -2,98 +2,104 @@ var express = require("express");
 var ws = require("ws");
 var http = require("http");
 var path = require("path");
-const { verify } = require("crypto");
 
-var theExpressApp = express();
-var theHttpServer = http.createServer();
+var expressApp = express();
+var httpServer = http.createServer();
 var webSocketServer = new ws.Server({
-	server: theHttpServer
+   server: httpServer
 });
 
-let messageAmount = 0
+expressApp.use(express.static(path.join(__dirname, "client-side")));
 
-// Code to setup the Express app (middleware, routes) can go here.
-theExpressApp.use(express.static(path.join(__dirname, "client-side")));
+let messageCount = 0;
 
-// Object with game logic
 const rules = {
    Rock: {
       Scissors: true,
-      Paper: false,
+      Paper: false
    },
    Scissors: {
-      Paper: true,
       Rock: false,
+      Paper: true
    },
    Paper: {
       Rock: true,
-      Scissors: false,
+      Scissors: false
    }
 }
 
-// const preFabMessage = {
-// 	CHOICE_ACCEPTED: () => {},
-// 	CHOICE_NOT_ACCEPTED: () => {},
-// 	OPPONENT_CHOICE: () => {},
-// 	WIN: () => {},
-// 	LOSER: () => {},
-// 	TIE: tieMessage
-// }
 
-// function sendChoiceAcceptedMessage(message) {
-//    console.log("sendChoiceAcceptedMessage")
-// }
-
-// function tieMessage() {
-//    console.log("tieMessage")
-// 	return { messageType: TIE };
-// }
-
-// function winMessage() {
-// 	return { messageType: WIN };
-// }
-
-function playGame(player1Socket, player2Socket) {
-   console.log(player1Socket.choice)
-	if (player1Socket.choice === player2Socket.choice) {
-      // tie
-      return { isTie: true, player1: player1Socket, player2: player2Socket }
-	} else if (rules[player1Socket.choice][player2Socket.choice]) {
-		// player 1 wins
-		return { isTie: false, winner: player1Socket, loser: player2Socket };
-	} else {
-		// player 2 wins
-		return { isTie: false, winner: player2Socket, loser: player1Socket };
-	}
+function opponentLeftMessage() {
+   return JSON.stringify({ messageType: "OPPONENT LEFT" })
 }
 
-// Connect to the server
-webSocketServer.on("connection", function connection(websocket) {
-	// When the server gets a message
-	websocket.on("message", function incoming(message) {
-      messageAmount++;
+function playGame(player1Socket, player2Socket) {
+   if (player1Socket.choice === player2Socket.choice) {
+      return { isTie: true, player1: player1Socket, player2: player2Socket }
+   } else if (rules[player1Socket.choice][player2Socket.choice]) {
+      player1Socket.score++;
+      return { isTie: false, winner: player1Socket, loser: player2Socket }
+   } else {
+      player2Socket.score++;
+      return { isTie: false, winner: player2Socket, loser: player1Socket }
+   }
+}
 
-      const messageObject = JSON.parse(message);
-		websocket.choice = messageObject.choice;
-      
-		if (messageAmount === 2) {
-			let [client1, client2] = webSocketServer.clients
-         let result = playGame(...webSocketServer.clients);
+function resetPlayers(p1, p2){
+   p1.choice = undefined;
+   p2.choice = undefined;
+   messageCount = 0;
+}
 
-			if (result.isTie) {
-            // send tie message
-            console.log("TIE")
-            result.player1.send("Draw!")
-            result.player2.send("Draw!")
-			} else {
-				result.winner.send("Winner");
-				result.loser.send("Loser");
-			}
-		}
-	});
+webSocketServer.on('connection', function connection(websocket) {
+   console.log("CONNECTION CREATED");
+
+   websocket.on('message', function incoming(message) {
+      messageCount++
+
+      const messageObject = JSON.parse(message)
+      websocket.choice = messageObject.choice;
+      websocket.username = messageObject.userName;
+
+      if (websocket.score == undefined) {
+         websocket.score = 0;
+      }
+
+      if (webSocketServer.clients.size == 2) {
+         const [client1, client2] = webSocketServer.clients
+         if (client1.choice != undefined && messageCount % 2 !== 0) {
+            client1.send(JSON.stringify({ messageType: "CHOICE ACCEPTED", opponentName: client2.username }));
+            client2.send(JSON.stringify({ messageType: "OPPONENT CHOICE", opponentName: client1.username }));
+         } else if (client2.choice != undefined && messageCount & 2 !== 0) {
+            client2.send(JSON.stringify({ messageType: "CHOICE ACCEPTED", opponentName: client1.username }));
+            client1.send(JSON.stringify({ messageType: "OPPONENT CHOICE", opponentName: client2.username }));
+         } else {
+            let result = playGame(client1, client2);
+            if (result.isTie) {
+               result.player1.send(JSON.stringify({ messageType: "TIE" }));
+               result.player2.send(JSON.stringify({ messageType: "TIE" }));
+               resetPlayers(client1, client2)
+            } else {
+               result.winner.send(JSON.stringify({ messageType: "WIN", ownScore: result.winner.score, opponentScore: result.loser.score, opponentName: result.loser.username }));
+               result.loser.send(JSON.stringify({ messageType: "LOSE", ownScore: result.loser.score, opponentScore: result.winner.score, opponentName: result.winner.username }));
+               resetPlayers(client1, client2)
+            }
+         }
+      }
+   });
+
+
 });
 
-theHttpServer.on("request", theExpressApp);
-theHttpServer.listen(3000, function () {
-	console.log("The Server is lisening on port 3000.");
+webSocketServer.on('error', function connection(websocket){
+   if(webSocketServer.clients.size >= 3){
+      console.log("nee")
+   }
+});
+
+
+// connect the Express App to all incoming requests on the HTTP server
+httpServer.on("request", expressApp);
+httpServer.listen(3000, function () {
+   console.log("The Server is listening on port 3000.");
 });
