@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 export default function ListItem(props) {
     return (
@@ -13,7 +14,6 @@ export default function ListItem(props) {
 
 function ItemHeader(props) {
     const handleTitleClick = (event) => {
-        event.preventDefault();
         props.select(props.item);
     };
     let titleStyle
@@ -27,9 +27,9 @@ function ItemHeader(props) {
 
     return (
         <div>
-            <a className="itemTitle" onClick={handleTitleClick} href={props.item.url} style={titleStyle} >
+            <Link className="itemTitle" onClick={handleTitleClick} to={"/item/"+props.item.id} style={titleStyle} >
                 {props.item.title}
-            </a>
+            </Link>
             <span className="domain"> ()</span>
         </div>
     );

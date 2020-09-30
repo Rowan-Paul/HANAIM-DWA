@@ -21,7 +21,7 @@ export default class Preferences extends React.Component {
     event.preventDefault();
     this.props.setColor(this.state.color)
     this.props.setListSize(this.state.listSize)
-    this.props.dialogClickHandler()
+    this.props.history.goBack()
   }
 
   render() {
@@ -53,7 +53,7 @@ export default class Preferences extends React.Component {
           </label>
           <div className="dialogButtons">
             <button onClick={(e) => this.onSubmit(e)}>OK</button>
-            <button onClick={this.props.dialogClickHandler}>Cancel</button>
+            <button onClick={ () => this.props.history.goBack() }>Cancel</button>
           </div>
           
         </div>

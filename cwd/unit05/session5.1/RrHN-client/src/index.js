@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 import Preferences from "./components/Preferences";
 import EmptyPanel from "./components/EmptyPanel";
 
@@ -12,9 +12,9 @@ import "./main.css"; // Using Webpack, we usually import CSS from JavaScript, no
 import { RrHNApp } from "./components/App";
 
 const theAppWithRouting = (
-	<BrowserRouter>
+	<Router>
 		<RrHNApp />
-	</BrowserRouter>
+	</Router>
 );
 
 ReactDOM.render(theAppWithRouting, document.getElementById('root'));
