@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 import AuthenticationAPI from "../api/AuthenticationAPI";
 
@@ -24,7 +25,7 @@ export class Login extends React.Component {
         loginFailure: !isLoggedIn
       });
       if (isLoggedIn) {
-        //TODO: here we need to redirect to the homepage
+        this.props.history.push("/")
       }
     });
   };

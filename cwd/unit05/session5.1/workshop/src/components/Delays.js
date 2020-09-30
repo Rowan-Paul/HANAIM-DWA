@@ -29,10 +29,10 @@ const DelaysOnDate = (props) => {
 	return (
 		<div className="content">
 			{delays.length > 0 ? (
-				delays.map(({ id, fromLocation, to, minutesHuman }) => (
+				delays.map(({ id, from, to, minutesHuman }) => (
 					<p key={id}>
-            from {from} to {to} - {minutesHuman} delay
-          </p>
+						from {from} to {to} - {minutesHuman} delay
+					</p>
 				))
 			) : (
 				<p>No delays for this date.</p>

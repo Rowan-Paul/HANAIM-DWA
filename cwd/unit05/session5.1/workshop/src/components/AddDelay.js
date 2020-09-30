@@ -1,4 +1,5 @@
 import React from "react";
+import { Prompt } from "react-router-dom";
 
 import DataAPI from "../api/DataAPI";
 
@@ -34,8 +35,10 @@ export class AddDelay extends React.Component {
 
     return (
       <div className="page">
-        {/* TODO: Here we need to alert the user when he/she leaves the page while 
-          something has changed. */}
+        <Prompt 
+          when={isDirty}
+          message={"Gegevens zijn nog niet opgeslagen. Wilt u doorgaan?"}
+        />
         <form onSubmit={handleSubmit}>
           <label htmlFor="date">Date</label>
           <input
