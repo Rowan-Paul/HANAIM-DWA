@@ -28,6 +28,7 @@ export class RrHNApp extends React.Component {
                   method: 'PUT',
                   body: 'seen'
                })
+               console.log("data: ",data)
       
                this.setState(() => ({
                   itemStatuses: {...this.state.itemStatuses, [`${item.id}`]: 'seen'}
@@ -37,6 +38,7 @@ export class RrHNApp extends React.Component {
             }
          }
      });
+     console.log("listItems: ",listItems)
    }
 
    onSelectItem = async (item) => {
@@ -45,6 +47,7 @@ export class RrHNApp extends React.Component {
             method: 'PUT',
             body: 'read'
          })
+         console.log("data: ",data)
 
          this.setState(() => ({
             itemStatuses: {...this.state.itemStatuses, [`${item.id}`]: 'read'}
