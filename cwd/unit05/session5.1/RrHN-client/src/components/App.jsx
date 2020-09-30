@@ -1,8 +1,10 @@
 import React from 'react'
+import { BrowserRouter as Route, Switch } from "react-router-dom";
 
 import IFrameArea from './IFrameArea';
 import ListItems from './ItemsList';
 import Preferences from './Preferences';
+import EmptyPanel from './EmptyPanel';
 
 export class RrHNApp extends React.Component {
    constructor(props) {
@@ -111,7 +113,7 @@ export class RrHNApp extends React.Component {
          if (this.state.selectedItem.length > 1) {
             itemPanel = <IFrameArea url={this.state.selectedItem} title={this.state.selectedItem.title}></IFrameArea>
          } else {
-            itemPanel = <h2>No items selected...</h2>
+            itemPanel = <EmptyPanel />
          }
       }
 
