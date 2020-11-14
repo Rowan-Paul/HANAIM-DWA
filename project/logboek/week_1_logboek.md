@@ -54,7 +54,7 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                      | Met Wie          | Resultaat                          | Link                                                                                                                                                                |
+| ---- | ------------------------- | ---------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Bespreking leerdoelen     | Team + PS docent | Leerdoelen opgesteld voor sprint 1 | [leerdoelen](https://github.com/HANICA-DWA/sep2020-stud-rowan-paul-flynn/blob/master/project/persoonlijk_onderzoeken/week_1_pre-game/planning_leerdoelen_1_en_2.md) |
+| 0.5  | Plan van Aanpak inleveren | Team             | Plan van Aanpak ingeleverd         |                                                                                                                                                                     |  |
