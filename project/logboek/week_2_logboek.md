@@ -18,12 +18,14 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak                       | Met Wie     | Resultaat                                             | Link                                                                             |
-| ---- | -------------------------- | ----------- | ----------------------------------------------------- | -------------------------------------------------------------------------------- |
-|      | Daily Stand-up             | Team        | Iedereen weet wat er gedaan is en moet komen          |                                                                                  |
-| 4.5  | Onderzoek Teams integratie | Individueel | Het is duidelijk hoe er een tab voor Teams moet komen | [pull request](https://github.com/HANICA-DWA/sep2020-project-jaguarundi/pull/33) |
-| 2    | Teams omgeving opzetten    | Individueel | Binnen teams zijn alle teams en personen klaargezet   |                                                                                  |
-|      | Daily stand-down           | Team        | Iedereen weet wat er gebeurd is vandaag               |                                                                                  |
+| Uren | Taak                       | Met Wie     | Resultaat                                                           | Link                                                                             |
+| ---- | -------------------------- | ----------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+|      | Daily Stand-up             | Team        | Iedereen weet wat er gedaan is en moet komen                        |                                                                                  |
+| 4.5  | Onderzoek Teams integratie | Individueel | Het is duidelijk hoe er een tab voor Teams moet komen               | [pull request](https://github.com/HANICA-DWA/sep2020-project-jaguarundi/pull/33) |
+| 0.5  | onderzoek SSE              | Individueel | Onderzoek naar SSE gedaan                                           |                                                                                  |
+| 1    | Authenticatie binnen Teams | Individueel | Het is duidelijk hoe gebruikers geauthenticeerd worden binnen Teams |                                                                                  |
+|      | Daily stand-down           | Team        | Iedereen weet wat er gebeurd is vandaag                             |                                                                                  |
+| 1.5  | ngrok dependency weghalen  | Individueel | Er is geen ngrok meer nodig om de site op HTTPS te serveren         |                                                                                  |
 
 ## Woensdag
 
