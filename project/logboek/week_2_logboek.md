@@ -31,10 +31,14 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                     | Met Wie          | Resultaat                           | Link       |
+| ---- | ------------------------ | ---------------- | ----------------------------------- | ---------- |
+| 1    | Gesprek coach            | Team + Coach     | Besproken hoe het gaat              | [commit]() |
+| 1    | PVA assesment            | Team + PS docent |                                     |            |
+| 1    | Bespreken leerdoelen     | Team + PS docent | Leerdoelen goedgekeurd              |            |
+| 3    | Teams omgeving instellen | Individueel      | Teams omgeving ingesteld            |            |
+| 1    | Sjaak helpen             | Sjaak en ik      | Pull request voor de server gemaakt | [pr]()     |
+|      | Daily stand down         | Team             |                                     |            |
 
 ## Donderdag
 
