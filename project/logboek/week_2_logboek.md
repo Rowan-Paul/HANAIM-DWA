@@ -44,10 +44,13 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                    | Met Wie             | Resultaat                            | Link       |
+| ---- | ----------------------- | ------------------- | ------------------------------------ | ---------- |
+| 1    | Workshop C4             | DWA                 | Kennis opgedaan over C4              |            |
+|      | Daily Stand up          | Team                | Iedereen weet wat gedaan moet worden |            |
+| 1.5  | Taken voor user stories | Sjaak, Stefan en ik | Duidelijke taken voor user stories   |            |
+| 3.5  | Software Guidebook      | Individueel         | Begin software guidebook af          | [commit]() |
+|      | Daily stand down        | Team                | Iedereen weet wat gedaan is          |            |
 
 ## Vrijdag
 
