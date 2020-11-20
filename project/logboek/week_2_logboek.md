@@ -56,7 +56,10 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak              | Met Wie     | Resultaat                            | Link       |
-| ---- | ----------------- | ----------- | ------------------------------------ | ---------- |
-|      | Daily Stand up    | Team        | Iedereen weet wat gedaan moet worden |            |
-| 3    | C4 modellen maken | Individueel | Level 1+2 modellen gemaakt           | [commit]() |
+| Uren | Taak                 | Met Wie                   | Resultaat                                 | Link             |
+| ---- | -------------------- | ------------------------- | ----------------------------------------- | ---------------- |
+|      | Daily Stand up       | Team                      | Iedereen weet wat gedaan moet worden      |                  |
+| 3    | C4 modellen maken    | Individueel               | Level 1+2 modellen gemaakt                | [commit]()       |
+| 0.5  | Kijken Azure license | Individueel               | License voor Azure deployment bekeken     |                  |
+| 1    | Feedback toepassen   | Individueel               | Feature af                                | [Pull Request]() |
+| 2    | PR reviewen/mergen   | Sjaak, Stefan, Stef en ik | Alle branches zijn gereviewed en gemerged |                  |
