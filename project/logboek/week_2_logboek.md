@@ -56,7 +56,7 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak              | Met Wie     | Resultaat                            | Link       |
+| ---- | ----------------- | ----------- | ------------------------------------ | ---------- |
+|      | Daily Stand up    | Team        | Iedereen weet wat gedaan moet worden |            |
+| 3    | C4 modellen maken | Individueel | Level 1+2 modellen gemaakt           | [commit]() |
