@@ -23,6 +23,7 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 |      | Daily stand-up         | Team        | Iedereen weet wat er moet gebeuren          |      |
 | 1    | Sjaak PR Reviewen      | Individueel |                                             |      |
 | 0.5  | Afronden WSL onderzoek | Individueel | Het is duidelijk of WSL gebruikt kan worden |      |
+| 4    | Afbeelding uploaden    | individueel | Afbeelding kan worden geupload              |      |
 
 ## Woensdag
 
