@@ -35,19 +35,27 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                          | Met Wie          | Resultaat                          | Link |
+| ---- | ----------------------------- | ---------------- | ---------------------------------- | ---- |
+| 1    | Gesprek coach                 | Team + Coach     |                                    |      |
+| 0.5  | Bespreken leerdoelen          | Team + PS docent |                                    |      |
+|      | Daily stand-up                | Team             | Iedereen weet wat er moet gebeuren |      |
+| 1    | functionaliteit studentpagina | Individueel      |                                    |      |
+| 1    | functionaliteit studentpagina | Individueel      |                                    |      |
+| 3.5  | functionaliteit studentpagina | Individueel      |                                    |      |
+| 3    | functionaliteit studentpagina | Individueel      |                                    |      |
 
 ## Donderdag
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                          | Met Wie     | Resultaat | Link |
+| ---- | ----------------------------- | ----------- | --------- | ---- |
+|      |                               |             |           |      |
+| 2    | functionaliteit studentpagina | Individueel |           |      |
+| 1    | Acceptatiecriteria bekijken   | Team        |           |      |
+| 0.5  | E2E PR reviewen               | Individueel |           |      |
+| 1.5  | voorbereiden sprint review    | Team        |           |      |
 
 ## Vrijdag
 
