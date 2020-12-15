@@ -49,19 +49,19 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak                          | Met Wie     | Resultaat | Link |
-| ---- | ----------------------------- | ----------- | --------- | ---- |
-|      |                               |             |           |      |
-| 2    | functionaliteit studentpagina | Individueel |           |      |
-| 1    | Acceptatiecriteria bekijken   | Team        |           |      |
-| 0.5  | E2E PR reviewen               | Individueel |           |      |
-| 1.5  | voorbereiden sprint review    | Team        |           |      |
+| Uren | Taak                          | Met Wie     | Resultaat                          | Link |
+| ---- | ----------------------------- | ----------- | ---------------------------------- | ---- |
+|      | Daily stand-up                | Team        | Iedereen weet wat er moet gebeuren |      |
+| 2    | functionaliteit studentpagina | Individueel |                                    |      |
+| 1    | Acceptatiecriteria bekijken   | Team        |                                    |      |
+| 0.5  | E2E PR reviewen               | Individueel |                                    |      |
+| 1.5  | voorbereiden sprint review    | Team        |                                    |      |
 
 ## Vrijdag
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak          | Met Wie           | Resultaat                       | Link |
+| ---- | ------------- | ----------------- | ------------------------------- | ---- |
+| 1.5  | Sprint Review | Team + PO + Coach |                                 |      |
+| 1.5  | Presentatie   | Team + PO + Klant | Feedback ontvangen over product |      |
