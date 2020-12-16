@@ -27,6 +27,9 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 | 1    | Input methoden hernoemen    | Individueel |                                    |      |
 | 0.5  | Leraar flow in Teams zetten | Individueel |                                    |      |
 | 0.5  | Michael PR reviewen         | Individueel |                                    |      |
+| 1.5  | PR verbeteren               | Individueel |                                    |      |
+| 0.5  | Sjaak PR reviewen           | Individueel |                                    |      |
+| 0.5  | Sjaak PR reviewen           | Individueel |                                    |      |
 
 ## Woensdag
 

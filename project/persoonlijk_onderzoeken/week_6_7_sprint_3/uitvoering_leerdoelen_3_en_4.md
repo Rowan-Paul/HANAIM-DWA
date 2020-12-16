@@ -1,4 +1,4 @@
-Uitvoering individuele bijdrage professional skills
+# Uitvoering individuele bijdrage professional skills
 
 Beschrijf wat je hebt gedaan om te werken aan je persoonlijke leerdoelen:
 
@@ -11,7 +11,7 @@ Beschrijf wat je hebt gedaan om te werken aan je persoonlijke leerdoelen:
 - Wat heeft het opgeleverd voor je team?
 
 (LEERDOEL 1)
-Ik wil eerder stoppen als ik iets niet snap
+**Ik wil eerder stoppen als ik iets niet snap**
 
 - Anderen vragen om mij te helpen
 - Literair
@@ -22,7 +22,7 @@ Ik wil eerder stoppen als ik iets niet snap
 - We hebben duidelijk aan de PO kunnen zeggen dat een taak niet lukte
 
 (LEERDOEL 2)
-Ik wil meer letten op het gebruiken van de Definition of Done tijdens reviews
+**Ik wil meer letten op het gebruiken van de Definition of Done tijdens reviews**
 
 - DoD in m'n favorietenbalk gezet
 - Nog niet
