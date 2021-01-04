@@ -35,25 +35,31 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                 | Met Wie     | Resultaat                          | Link |
+| ---- | -------------------- | ----------- | ---------------------------------- | ---- |
+|      | Daily stand-up       | Team        | Iedereen weet wat er moet gebeuren |      |
+| 0.5  | Routes US23          | Individueel |                                    |      |
+| 0.5  | Leerdoelen bespreken | Team + PS   |                                    |      |
+| 1    | Routes US23          | Individueel | Routes werken en hebben tests      |      |
+| 0.5  | Sjaak PR reviewen    | Individueel |                                    |      |
 
 ## Donderdag
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                      | Met Wie     | Resultaat                          | Link |
+| ---- | ------------------------- | ----------- | ---------------------------------- | ---- |
+|      | Daily stand-up            | Team        | Iedereen weet wat er moet gebeuren |      |
+| 1    | Routes bedenken voor US23 | Stef        |                                    |      |
+| 1.5  | Routes maken              | Individueel |                                    |      |
+| 0.5  | Michael PR reviewen       | Individueel |                                    |      |
 
 ## Vrijdag
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                | Met Wie               | Resultaat                          | Link |
+| ---- | ------------------- | --------------------- | ---------------------------------- | ---- |
+|      | Daily stand-up      | Team                  | Iedereen weet wat er moet gebeuren |      |
+| 0.5  | Overleg wireframes  | Michael, Stefan, Lars |                                    |      |
+| 0.5  | Wireframes reviewen | Individueel           |                                    |      |
