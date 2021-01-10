@@ -16,15 +16,16 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 | 0.5  | Documentatie         | Individueel |                                    |      |
 | 0.5  | PR Michael reviewen  | Individueel |                                    |      |
 | 0.5  | Documentatie         | Individueel |                                    |      |
+| 1    | PR Stefan reviewen   | Individueel |                                    |      |
 
 ## Dinsdag
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak               | Met Wie     | Resultaat                          | Link |
+| ---- | ------------------ | ----------- | ---------------------------------- | ---- |
+|      | Daily stand-up     | Team        | Iedereen weet wat er moet gebeuren |      |
+| 0.5  | PR Stefan reviewen | Individueel |                                    |      |
 
 ## Woensdag
 
@@ -48,7 +49,6 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak          | Met Wie    | Resultaat | Link |
+| ---- | ------------- | ---------- | --------- | ---- |
+| 1    | Sprint Review | Groep + PO |           |      |
