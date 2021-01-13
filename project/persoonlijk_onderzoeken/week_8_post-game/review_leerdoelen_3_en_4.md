@@ -20,7 +20,7 @@ Dit ging goed:
 
 Dit kon beter:
 
-1. -
+1. nvt
 2. Strikter opletten op de DoD
 
 Ik heb mijn leerdoel wel/niet bereikt omdat:

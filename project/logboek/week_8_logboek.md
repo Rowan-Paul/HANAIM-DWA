@@ -26,19 +26,22 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                    | Met Wie     | Resultaat                          | Link |
+| ---- | ----------------------- | ----------- | ---------------------------------- | ---- |
+|      | Daily stand-up          | Team        | Iedereen weet wat er moet gebeuren |      |
+| 3    | E2E test student access | Individueel |                                    |      |
+| 1.5  | E2E test student access | Individueel |                                    |      |
+| 2    | Routes rework           | Individueel |                                    |      |
 
 ## Woensdag
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak                 | Met Wie          | Resultaat | Link |
+| ---- | -------------------- | ---------------- | --------- | ---- |
+| 1    | Gesprek coach        | Team + Coach     |           |      |
+| 0.5  | Bespreken leerdoelen | Team + PS docent |           |      |
+| 1.5  | Routes rework        | Individueel      |           |      |
 
 ## Donderdag
 
