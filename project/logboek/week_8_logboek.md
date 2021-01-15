@@ -57,7 +57,6 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak              | Met Wie | Resultaat | Link |
+| ---- | ----------------- | ------- | --------- | ---- |
+| 3    | Laatste dingetjes | Team    |           |      |
