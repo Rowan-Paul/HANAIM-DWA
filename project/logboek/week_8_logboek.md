@@ -47,10 +47,11 @@ Eventueel informatieve algemene opmerkingen over deze dag.
 
 Eventueel informatieve algemene opmerkingen over deze dag.
 
-| Uren | Taak | Met Wie | Resultaat | Link |
-| ---- | ---- | ------- | --------- | ---- |
-|      |      |         |           |      |
-|      |      |         |           |      |
+| Uren | Taak           | Met Wie     | Resultaat                          | Link |
+| ---- | -------------- | ----------- | ---------------------------------- | ---- |
+|      | Daily stand-up | Team        | Iedereen weet wat er moet gebeuren |      |
+| 2    | Routes rework  | Individueel |                                    |      |
+| 1.5  | Routes fixen   | Individueel |                                    |      |
 
 ## Vrijdag
 
